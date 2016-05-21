@@ -93,7 +93,11 @@ module.exports = class MongoQueue
       crawler: @crawler.name
       status : 'queued'
 
-    @Item.findOneAndUpdate query, status: 'spooled', callback
+    options =
+      sort:
+        id: 1
+
+    @Item.findOneAndUpdate query, options, status: 'spooled', callback
 
   # Gets the maximum total request time, request latency, or download time
   max: (statisticname, callback) ->
