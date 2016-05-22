@@ -10,7 +10,6 @@ module.exports = class MongoQueue
 
     # Update status of items in db on crawler events
     @updateStatus = (item, status) ->
-      console.log "#{status} \t #{item.url}"
       item.set {status}
       item.save (error) ->
         if error then throw error
@@ -60,7 +59,9 @@ module.exports = class MongoQueue
   # Clean the queue
   clean: (callback) ->
     @Item
-      .remove crawler: @crawler.name
+      .remove crawler: @crawler.name, (err) =>
+        if err
+          console.log err
 
   # Check if an item already exists in the queue...
   exists: (protocol, domain, port, path, callback) ->
