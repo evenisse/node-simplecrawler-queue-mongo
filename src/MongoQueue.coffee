@@ -59,9 +59,7 @@ module.exports = class MongoQueue
   # Clean the queue
   clean: (callback) ->
     @Item
-      .remove crawler: @crawler.name, (err) =>
-        if err
-          console.log err
+      .remove crawler: @crawler.name, callback
 
   # Check if an item already exists in the queue...
   exists: (protocol, domain, port, path, callback) ->
