@@ -21,6 +21,10 @@ module.exports = (connection, crawler) ->
       required: yes
       index   : yes
 
+    referrer  :
+      type    : String
+      required: no
+
     status  :
       type    : String
       default : 'queued'

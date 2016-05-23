@@ -40,12 +40,14 @@ module.exports = class MongoQueue
 
 
   # Add item to queue
-  add: (protocol, host, port, path, callback) ->
+  add: (protocol, host, port, path, depth, referrer, callback) ->
     data = {
       protocol
       host
       port
       path
+      depth
+      referrer
       crawler: @crawler.name
     }
     @Item.findOne data, (error, item) =>
