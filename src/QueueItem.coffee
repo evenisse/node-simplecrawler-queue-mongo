@@ -25,6 +25,10 @@ module.exports = (connection, crawler) ->
       type    : String
       required: no
 
+    depth     :
+      type    : Number
+      required: no
+
     status  :
       type    : String
       default : 'queued'
